@@ -5,59 +5,57 @@ namespace PDBEF
 {
     internal class Program
     {
+        static string connectionParams = "Server=(localdb)\\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;";
         static void Main(string[] args)
         {
             // Добавление
-            using (ApplicationContext db = new ApplicationContext())
+            using (ApplicationContext db = new ApplicationContext(connectionParams, Console.WriteLine))
             {
-                User user1 = new User { Name = "Tom", Age = 33 };
-                User user2 = new User { Name = "Alice", Age = 26 };
+
+                /*User user1 = new User("Надежда", "Филимоненкова");
+                User user2 = new User("Танзиля", "Черкасова");
 
                 // Добавление
                 db.Users.Add(user1);
                 db.Users.Add(user2);
                 db.SaveChanges();
-            }
 
-            // получение
-            using (ApplicationContext db = new ApplicationContext())
-            {
+
+                // получение
+
                 // получаем объекты из бд и выводим на консоль
                 var users = db.Users.ToList();
                 Console.WriteLine("Данные после добавления:");
                 foreach (User u in users)
                 {
-                    Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
+                    Console.WriteLine($"{u.Id}.{u.Name} - {u.Surname}");
                 }
-            }
 
-            // Редактирование
-            using (ApplicationContext db = new ApplicationContext())
-            {
+                // Редактирование
+
                 // получаем первый объект
                 User user = db.Users.FirstOrDefault();
                 if (user != null)
                 {
                     user.Name = "Bob";
-                    user.Age = 44;
+                    user.Surname = "Test";
                     //обновляем объект
                     //db.Users.Update(user);
                     db.SaveChanges();
                 }
+
                 // выводим данные после обновления
                 Console.WriteLine("\nДанные после редактирования:");
-                var users = db.Users.ToList();
+                users = db.Users.ToList();
                 foreach (User u in users)
                 {
-                    Console.WriteLine($"{u.Id}. {u.Name} - {u.Age}");
+                    Console.WriteLine($"{u.Id}. {u.Name} - {u.Surname}");
                 }
-            }
 
-            // Удаление
-            using (ApplicationContext db = new ApplicationContext())
-            {
+                // Удаление
+
                 // получаем первый объект
-                User user = db.Users.FirstOrDefault();
+                user = db.Users.FirstOrDefault();
                 if (user != null)
                 {
                     //удаляем объект
@@ -66,12 +64,13 @@ namespace PDBEF
                 }
                 // выводим данные после обновления
                 Console.WriteLine("\nДанные после удаления:");
-                var users = db.Users.ToList();
+                users = db.Users.ToList();
                 foreach (User u in users)
                 {
-                    Console.WriteLine($"{u.Id}.{u.Name} - {u.Age}");
-                }
+                    Console.WriteLine($"{u.Id}.{u.Name} - {u.Surname}");
+                }*/
             }
+
             Console.Read();
         }
 
