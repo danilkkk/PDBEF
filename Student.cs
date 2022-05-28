@@ -10,8 +10,8 @@ namespace PDBEF
     {
         public int YearOfEntry { get; set; } // год поступления
 
-        public List<Lector> Lectors { get; set; } = new(); // преподаватели студента
-        public List<Lecture> AttendedLectures { get; set; } = new(); // лекции, посещенные студентом студента
+        public List<LectorStudent> Lectors { get; set; } = new(); // преподаватели студента
+        public List<LectureStudent> AttendedLectures { get; set; } = new(); // лекции, посещенные студентом студента
 
         public Student() : base() { }
 

@@ -73,25 +73,39 @@ namespace PDBEF
             // лекции
 
             Lecture lecture1 = new Lecture(1, "2.09.2021", "Сортировка методом пузырька", "https://aboba.amogus.com/metod-pyzurka.php?lectId=1", 1, 2);
-
-           /* lecture1.StudentsWhoAttended.Add(lupa);
-            lecture1.StudentsWhoAttended.Add(pupa);
-            lecture1.StudentsWhoAttended.Add(vitya);*/
-
             Lecture lecture2 = new Lecture(2, "3.09.2021", "Множества", "https://aboba.amogus.com/mnozestva.php?lectId=1", 2, 1);
-
-           /* lecture1.StudentsWhoAttended.Add(lupa);
-            lecture1.StudentsWhoAttended.Add(vitya);*/
-
             Lecture lecture3 = new Lecture(3, "9.09.2021", "Сортировка методом пузырька. Дополнительные главы", "https://aboba.amogus.com/metod-pyzurka.php?lectId=2", 3, 2);
-
-           // lecture1.StudentsWhoAttended.Add(vitya);
 
             modelBuilder.Entity<Lecture>().HasData(
              new Lecture[]
              {
                  lecture1, lecture2, lecture3
              });
+
+            // посещаемость
+
+            modelBuilder.Entity<LectureStudent>().HasKey(i => new { i.LectureId, i.StudentId });
+            modelBuilder.Entity<LectureStudent>().HasData(
+                 new LectureStudent[]
+               {
+                new LectureStudent(1, 1), // Зайков - 1 лекция
+                new LectureStudent(1, 2), // Карасев - 1 лекция
+                new LectureStudent(1, 3), // Баринов - 1 лекция
+               });
+
+            // связь между преподавателями и студентами
+            modelBuilder.Entity<LectorStudent>().HasKey(i => new { i.LectorId, i.StudentId });
+
+            modelBuilder.Entity<LectorStudent>().HasData(
+                 new LectorStudent[]
+               {
+                new LectorStudent(1, 1), // Зайков - Пак
+                new LectorStudent(1, 2), // Карасев - Пак
+                new LectorStudent(1, 3), // Баринов - Пак
+                new LectorStudent(2, 1), // Зайков - Щукин
+                new LectorStudent(2, 2), // Карасев - Щукин
+                new LectorStudent(2, 3), // Баринов - Щукин
+               });
 
             // оценки
             modelBuilder.Entity<Grade>().HasData(

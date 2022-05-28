@@ -29,7 +29,7 @@ namespace PDBEF
 
         public string Url { get; set; }
 
-        public List<Student> StudentsWhoAttended { get; set; } = new(); // студенты, посетившие лекцию
+        public List<LectureStudent> StudentsWhoAttended { get; set; } = new(); // студенты, посетившие лекцию
 
         public Lecture(string date, string title, string url, Homework homework, Lector lector)
         {

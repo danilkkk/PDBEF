@@ -10,7 +10,7 @@ namespace PDBEF
     {
         public int WorkingSince { get; set; } // год начала работы
 
-        public List<Student> Students { get; set; } = new(); // слушатели преподавателя
+        public List<LectorStudent> Students { get; set; } = new(); // слушатели преподавателя
 
         public List<Lecture> Lectures { get; set; } = new(); // лекции, закрепленные за преподавателем
 
